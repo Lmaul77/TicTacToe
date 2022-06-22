@@ -1,9 +1,10 @@
 const gameState = {
+    active:  true,
     players: ['x', 'o'],
     board: [
       ['x', 'o', 'x'],
       ['o', 'x', 'o'],
-      ['o', 'x', 'o']
+      ['o', 'x', 'x']
     ]
   }
 
@@ -57,11 +58,12 @@ function checkforwin (test) {
         posttest = test.join('')
         // console.log(posttest)
         if (posttest === 'xxx' || posttest === 'ooo') {
-            console.log('WINNER')
+            gameState.active = false
+            // console.log('WINNER')
             return true
     }
         else {
-            console.log('LOSER')
+            // console.log('LOSER')
             return false
         }
     }
@@ -72,7 +74,6 @@ function checkforwin (test) {
 // ------------------------------------------
 
 function tictacoevalidator (checker) {
-    let winner = true
     let currdiag = checkDiagonal(checker)
     let wincheck3 = checkforwin(currdiag)
     if (!wincheck3) {
@@ -98,13 +99,9 @@ function tictacoevalidator (checker) {
     // console.log('NO WINNER colnum')
     
   }  
-    // if (winner) {
-    //     console.log('WINNER')
-    // }
-    // else {
-    //     console.log('LOSER')
-    // }
-   return true
+}
+    if (!gameState.active) {
+    console.log("Game Over")
 }
 }
 
@@ -119,7 +116,7 @@ tictacoevalidator(gameState.board)
 // const gameArea = document.getElementsByTagName('table');
 // gameArea.addEventListener('click', function(clickMove) {
 //   if (clickMove.playerone) {
-//     null = playeroneId
+//     null = playerone
 //   }
 // } 
 // );
