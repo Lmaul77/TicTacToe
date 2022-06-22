@@ -12,82 +12,82 @@ const gameState = {
 
 //   ------------------------------------------------------------
 
-// function checkRow(gameboard, rownum) {
-//   let rowchecker = gameboard[rownum];
-//   return rowchecker;
-// }
+function checkRow(gameboard, rownum) {
+  let rowchecker = gameboard[rownum];
+  return rowchecker;
+}
 
-// function checkColumn(gameboard, colnum) {
-//   let columnchecker = [];
-//   for (let i = 0; i < gameboard.length; i++) {
-//     columnchecker.push(gameboard[i][colnum]);
-//   }
-//   return columnchecker;
-// }
+function checkColumn(gameboard, colnum) {
+  let columnchecker = [];
+  for (let i = 0; i < gameboard.length; i++) {
+    columnchecker.push(gameboard[i][colnum]);
+  }
+  return columnchecker;
+}
 
-// function checkDiagonal(diagone) {
-//   diagonalchecker = [];
-//   for (let i = 0; i < diagone.length; i++) {
-//     diagonalchecker.push(diagone[i][i]);
-//   }
-//   return diagonalchecker;
-// }
+function checkDiagonal(diagone) {
+  diagonalchecker = [];
+  for (let i = 0; i < diagone.length; i++) {
+    diagonalchecker.push(diagone[i][i]);
+  }
+  return diagonalchecker;
+}
 
-// function checkDiagonal2(diagtwo) {
-//   diagonalchecker2 = [];
-//   for (let i = 0; i < diagtwo.length; i++) {
-//     diagonalchecker2.push(diagtwo[i][(i * 2 + 5) % 3]);
-//   }
-//   return diagonalchecker2;
-// }
+function checkDiagonal2(diagtwo) {
+  diagonalchecker2 = [];
+  for (let i = 0; i < diagtwo.length; i++) {
+    diagonalchecker2.push(diagtwo[i][(i * 2 + 5) % 3]);
+  }
+  return diagonalchecker2;
+}
 
-// // ---------------------------------------
+// ---------------------------------------
 
-// function checkforwin(test) {
-//   for (let i = 0; i < test.length; i++) {
-//     posttest = test.join("");
-//     if (posttest === "xxx" || posttest === "ooo") {
-//       gameState.active = false;
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   }
-// }
+function checkforwin(test) {
+  for (let i = 0; i < test.length; i++) {
+    posttest = test.join("");
+    if (posttest === "xxx" || posttest === "ooo") {
+      gameState.active = false;
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
 
-// // ------------------------------------------
+// ------------------------------------------
 
-// function tictacoevalidator(checker) {
-//   let currdiag = checkDiagonal(checker);
-//   let wincheck3 = checkforwin(currdiag);
-//   if (!wincheck3) {
-//   }
-//   let currdiag2 = checkDiagonal2(checker);
-//   let wincheck4 = checkforwin(currdiag2);
-//   if (!wincheck4) {
-//   }
-//   for (let i = 0; i < checker.length; i++) {
-//     let currRow = checkRow(checker, i);
-//     let wincheck = checkforwin(currRow);
-//     if (!wincheck) {
-//     }
-//     let currcol = checkColumn(checker, i);
-//     let wincheck2 = checkforwin(currcol);
-//     if (!wincheck2) {
-//     }
-//   }
-//   if (!gameState.active) {
-//     console.log("Game Over!");
-//   }
+function tictacoevalidator(checker) {
+  let currdiag = checkDiagonal(checker);
+  let wincheck3 = checkforwin(currdiag);
+  if (!wincheck3) {
+  }
+  let currdiag2 = checkDiagonal2(checker);
+  let wincheck4 = checkforwin(currdiag2);
+  if (!wincheck4) {
+  }
+  for (let i = 0; i < checker.length; i++) {
+    let currRow = checkRow(checker, i);
+    let wincheck = checkforwin(currRow);
+    if (!wincheck) {
+    }
+    let currcol = checkColumn(checker, i);
+    let wincheck2 = checkforwin(currcol);
+    if (!wincheck2) {
+    }
+  }
+  if (!gameState.active) {
+    console.log("Game Over!");
+  }
 
-//   // let fullboard = gameState.board.flat()
+  // let fullboard = gameState.board.flat()
 
-//   // if (!fullboard.includes(null)){
-//   //     console.log('The Board is Full!  Press clear to reset the board!')
-//   // }
-// }
+  // if (!fullboard.includes(null)){
+  //     console.log('The Board is Full!  Press clear to reset the board!')
+  // }
+}
 
-// tictacoevalidator(gameState.board);
+tictacoevalidator(gameState.board);
 
 // -------------------------------------------
 
