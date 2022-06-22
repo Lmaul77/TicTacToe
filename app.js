@@ -4,7 +4,7 @@ const gameState = {
     board: [
       ['x', 'o', 'x'],
       ['o', 'x', 'o'],
-      ['o', 'x', 'x']
+      ['o', 'x', 'o']
     ]
   }
 
@@ -103,10 +103,17 @@ function tictacoevalidator (checker) {
     if (!gameState.active) {
     console.log("Game Over")
 }
+    // let fullboard = gameState.board.flat()
+
+    // if (!fullboard.includes(null)){
+    //     console.log('The Board is Full!  Press clear to reset the board!')
+    // }
+    
+   
 }
 
 tictacoevalidator(gameState.board)
-
+console.log(gameState.board.flat)
 
 // -------------------------------------------
 
