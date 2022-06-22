@@ -52,6 +52,9 @@ table {
 td {
     display: table-cell;
     background-color: lightgray;
+    font-size: 150px;
+    color: red;
+    text-align: center;
     margin: 10px;
     height: 200px;
     width: 200px;
