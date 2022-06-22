@@ -11,7 +11,7 @@ const gameState = {
 
 function checkRow (rownum) {
     let rowchecker = gameState.board[rownum]
-    console.log(rowchecker)
+    // console.log(rowchecker)
     return rowchecker
 }
 
@@ -22,7 +22,7 @@ function checkColumn (colnum) {
     for (let i = 0; i < gameState.board.length; i++) {
     columnchecker.push(gameState.board[i][colnum])
   }
-  console.log(columnchecker) 
+//   console.log(columnchecker) 
   return columnchecker
 }
 
@@ -33,7 +33,7 @@ function checkDiagonal () {
   for (let i = 0; i < gameState.board.length; i++) {
     diagonalchecker.push(gameState.board[i][i])
   }
-  console.log(diagonalchecker)
+//   console.log(diagonalchecker)
   return diagonalchecker
 }
 
@@ -44,7 +44,7 @@ function checkDiagonal2 () {
   for (let i = 0; i < gameState.board.length; i++) {
     diagonalchecker2.push(gameState.board[i][(i * 2 + 5) % 3]);
   }
-  console.log(diagonalchecker2)
+//   console.log(diagonalchecker2)
   return diagonalchecker2
 }
 
@@ -54,14 +54,15 @@ function checkDiagonal2 () {
 
 function checkforwin (test) {
     for (let i = 0; i < test.length; i++) {
-        testarray = test[i]
-        nextstring = testarray.join('')
-        if (nextstring === 'xxx' || nextstring === 'ooo') {
+        test.join('')
+        if (test === 'xxx' || test === 'ooo') {
+        return true
         // console.log(nextstring)
         // console.log('WINNER')
     }
         else {
-            // console.log('LOSER')
+        return false
+        // console.log('LOSER')
         }
     }
 }
@@ -75,25 +76,30 @@ function tictacoevalidator (checker) {
   let currRow = checkRow(i)
   let wincheck = checkforwin(currRow)
   if (!wincheck) {
+    console.log('NO WINNER')
     return "No Winner"
   }
   let currcol = checkColumn(i)
   let wincheck2 = checkforwin(currcol)
   if (!wincheck2) {
+    console.log('NO WINNER')
     return "No Winner"
   }  
   let currdiag = checkDiagonal(i)
   let wincheck3 = checkforwin(currdiag)
   if (!wincheck3) {
+    console.log('NO WINNER')
     return "No Winner"
   }
   let currdiag2 = checkDiagonal2(i)
   let wincheck4 = checkforwin(currdiag2)
   if (!wincheck4) {
+    console.log('NO WINNER')
     return "No Winner"
   }
 }
-  return "Winner"
+console.log('WINNER')  
+return "Winner"
 }
 
 tictacoevalidator(gameState.board)
