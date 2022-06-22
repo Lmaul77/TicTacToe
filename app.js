@@ -3,24 +3,24 @@ const gameState = {
     board: [
       ['x', 'o', 'x'],
       ['o', 'x', 'o'],
-      ['o', 'x', 'x']
+      ['o', 'x', 'o']
     ]
   }
 
 //   ------------------------------------------------------------
 
-function checkRow (rownum) {
-    let rowchecker = gameState.board[rownum]
+function checkRow (gameboard, rownum) {
+    let rowchecker = gameboard[rownum]
     // console.log(rowchecker)
     return rowchecker
 }
 
 // checkRow(0)
 
-function checkColumn (colnum) {
+function checkColumn (gameboard, colnum) {
     let columnchecker = []
-    for (let i = 0; i < gameState.board.length; i++) {
-    columnchecker.push(gameState.board[i][colnum])
+    for (let i = 0; i < gameboard.length; i++) {
+    columnchecker.push(gameboard[i][colnum])
   }
 //   console.log(columnchecker) 
   return columnchecker
@@ -28,10 +28,10 @@ function checkColumn (colnum) {
 
 // checkColumn(0)
 
-function checkDiagonal () {
+function checkDiagonal (diagone) {
   diagonalchecker = []
-  for (let i = 0; i < gameState.board.length; i++) {
-    diagonalchecker.push(gameState.board[i][i])
+  for (let i = 0; i < diagone.length; i++) {
+    diagonalchecker.push(diagone[i][i])
   }
 //   console.log(diagonalchecker)
   return diagonalchecker
@@ -39,10 +39,10 @@ function checkDiagonal () {
 
 // checkDiagonal()
 
-function checkDiagonal2 () {
+function checkDiagonal2 (diagtwo) {
   diagonalchecker2 = []
-  for (let i = 0; i < gameState.board.length; i++) {
-    diagonalchecker2.push(gameState.board[i][(i * 2 + 5) % 3]);
+  for (let i = 0; i < diagtwo.length; i++) {
+    diagonalchecker2.push(diagtwo[i][(i * 2 + 5) % 3]);
   }
 //   console.log(diagonalchecker2)
   return diagonalchecker2
@@ -54,15 +54,15 @@ function checkDiagonal2 () {
 
 function checkforwin (test) {
     for (let i = 0; i < test.length; i++) {
-        test.join('')
-        if (test === 'xxx' || test === 'ooo') {
-        return true
-        // console.log(nextstring)
-        // console.log('WINNER')
+        posttest = test.join('')
+        // console.log(posttest)
+        if (posttest === 'xxx' || posttest === 'ooo') {
+            console.log('WINNER')
+            return true
     }
         else {
-        return false
-        // console.log('LOSER')
+            console.log('LOSER')
+            return false
         }
     }
 }
@@ -72,34 +72,40 @@ function checkforwin (test) {
 // ------------------------------------------
 
 function tictacoevalidator (checker) {
-  for (let i = 0; i < checker.length; i++) {
-  let currRow = checkRow(i)
-  let wincheck = checkforwin(currRow)
-  if (!wincheck) {
-    console.log('NO WINNER')
-    return "No Winner"
+    let winner = true
+    let currdiag = checkDiagonal(checker)
+    let wincheck3 = checkforwin(currdiag)
+    if (!wincheck3) {
+    // console.log('NO WINNER diagone')
+    
   }
-  let currcol = checkColumn(i)
-  let wincheck2 = checkforwin(currcol)
-  if (!wincheck2) {
-    console.log('NO WINNER')
-    return "No Winner"
+    let currdiag2 = checkDiagonal2(checker)
+    let wincheck4 = checkforwin(currdiag2)
+    if (!wincheck4) {
+    // console.log('NO WINNER diagtwo')
+    
+  }
+    for (let i = 0; i < checker.length; i++) {
+    let currRow = checkRow(checker, i)
+    let wincheck = checkforwin(currRow)
+    if (!wincheck) {
+    // console.log('NO WINNER rownum')
+    
+  }
+    let currcol = checkColumn(checker, i)
+    let wincheck2 = checkforwin(currcol)
+    if (!wincheck2) {
+    // console.log('NO WINNER colnum')
+    
   }  
-  let currdiag = checkDiagonal(i)
-  let wincheck3 = checkforwin(currdiag)
-  if (!wincheck3) {
-    console.log('NO WINNER')
-    return "No Winner"
-  }
-  let currdiag2 = checkDiagonal2(i)
-  let wincheck4 = checkforwin(currdiag2)
-  if (!wincheck4) {
-    console.log('NO WINNER')
-    return "No Winner"
-  }
+    // if (winner) {
+    //     console.log('WINNER')
+    // }
+    // else {
+    //     console.log('LOSER')
+    // }
+   return true
 }
-console.log('WINNER')  
-return "Winner"
 }
 
 tictacoevalidator(gameState.board)

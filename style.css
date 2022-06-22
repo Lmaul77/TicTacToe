@@ -45,13 +45,13 @@ input {
 }
 
 table {
-    background-color: red;
+    background-color: darkgrey;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 td {
     display: table-cell;
     background-color: lightgray;
-    /* border: solid red 10px; */
     margin: 10px;
     height: 200px;
     width: 200px;
@@ -69,7 +69,7 @@ button {
 }
 
 .playeroneimage {
-    
+
 }
 
 .playertwoimage {
