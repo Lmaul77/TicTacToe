@@ -1,10 +1,10 @@
 const gameState = {
-    active:  true,
+    active: true,
     players: ['x', 'o'],
     board: [
       ['x', 'o', 'x'],
       ['o', 'x', 'o'],
-      ['o', 'x', 'o']
+      ['o', 'x', 'x']
     ]
   }
 
@@ -59,11 +59,9 @@ function checkforwin (test) {
         // console.log(posttest)
         if (posttest === 'xxx' || posttest === 'ooo') {
             gameState.active = false
-            // console.log('WINNER')
             return true
     }
         else {
-            // console.log('LOSER')
             return false
         }
     }
@@ -101,9 +99,10 @@ function tictacoevalidator (checker) {
   }  
 }
     if (!gameState.active) {
-    console.log("Game Over")
-}
-    // let fullboard = gameState.board.flat()
+      console.log("Game Over!")
+    }    
+
+// let fullboard = gameState.board.flat()
 
     // if (!fullboard.includes(null)){
     //     console.log('The Board is Full!  Press clear to reset the board!')
@@ -113,7 +112,7 @@ function tictacoevalidator (checker) {
 }
 
 tictacoevalidator(gameState.board)
-console.log(gameState.board.flat)
+// console.log(gameState.board.flat())
 
 // -------------------------------------------
 
@@ -123,7 +122,7 @@ console.log(gameState.board.flat)
 // const gameArea = document.getElementsByTagName('table');
 // gameArea.addEventListener('click', function(clickMove) {
 //   if (clickMove.playerone) {
-//     null = playerone
+//     null = playeroneId
 //   }
 // } 
 // );
