@@ -41,7 +41,7 @@ function checkDiagonal2(diagtwo) {
   return diagonalchecker2;
 }
 
-// ---------------------------------------
+// // ---------------------------------------
 
 function checkforwin(test) {
   for (let i = 0; i < test.length; i++) {
@@ -55,9 +55,9 @@ function checkforwin(test) {
   }
 }
 
-// ------------------------------------------
+// // ------------------------------------------
 
-function tictacoevalidator(checker) {
+function tictactoevalidator(checker) {
   let currdiag = checkDiagonal(checker);
   let wincheck3 = checkforwin(currdiag);
   if (!wincheck3) {
@@ -78,52 +78,68 @@ function tictacoevalidator(checker) {
   }
   if (!gameState.active) {
     console.log("Game Over!");
+    gameState.active = true;
   }
 
-  // let fullboard = gameState.board.flat()
+  let fullboard = gameState.board.flat()
 
-  // if (!fullboard.includes(null)){
-  //     console.log('The Board is Full!  Press clear to reset the board!')
-  // }
+  if (!fullboard.includes(null)){
+      console.log('The Board is Full!  Press clear to reset the board!')
+  }
 }
 
-tictacoevalidator(gameState.board);
+
 
 // -------------------------------------------
 
 let board = document.getElementById("gametable");
 let clear = document.getElementById("clearbutton");
+let cell = document.getElementsByClassName("cell");
 let boardcounter = 0;
 
-
 board.addEventListener('click', (event) => {
-  if (boardcounter % 2 === 0) {
-    event.target.innerText = gameState.players[0]
+  let id = event.target.id;
+  if (!gameState.board[id[0]][id[1]]) {
+    if (boardcounter % 2 === 0) {
+    event.target.innerText = gameState.players[0];
+    gameState.board[id[0]][id[1]] = gameState.players[0];
+    tictactoevalidator(gameState.board);
   }
   if (boardcounter % 2 === 1) {
-    event.target.innerText = gameState.players[1]
+    event.target.innerText = gameState.players[1];
+    gameState.board[id[0]][id[1]] = gameState.players[1];
+    tictactoevalidator(gameState.board);
   }
   boardcounter += 1
+  }
+});
+
+// ---------------------------------------------------------------------------------
+
+clear.addEventListener("click", () => {
+  let cells = document.getElementsByClassName('cell')
+  console.log(cells)
+  let arraycells = Array.from(cells)
+  console.log(arraycells)
+  arraycells.forEach((element) => {
+    element.innerHTML = ''
+})
+  gameState.board = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+  ]
 })
 
-clear.addEventListener("click", (event) => {
-  let cellOne = document.getElementById('cellOne')
-  let cellTwo = document.getElementById('cellTwo')
-  let cellThree = document.getElementById('cellThree')
-  let cellFour = document.getElementById('cellFour')
-  let cellFive = document.getElementById('cellFive')
-  let cellSix = document.getElementById('cellSix')
-  let cellSeven = document.getElementById('cellSeven')
-  let cellEight = document.getElementById('cellEight')
-  let cellNine = document.getElementById('cellNine')
-  event.target.matches('.clearbutton');
-  cellOne.innerText = null;
-  cellTwo.innerText = null;
-  cellThree.innerText = null;
-  cellFour.innerText = null;
-  cellFive.innerText = null;
-  cellSix.innerText = null;
-  cellSeven.innerText = null;
-  cellEight.innerText = null;
-  cellNine.innerText = null;
+// ------------------------------------------------------------------------------------------
+
+let input1 = document.getElementsById('playernameone')
+let playeronename = document.getElementById('playeronename')
+let playertwoname = document.getElementById('playertwoname')
+
+input1.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && input1.innerText.length > 0) {
+    input1.style.display = 'none'
+    playeronename.innerText = input1.innerText
+  }
 })
