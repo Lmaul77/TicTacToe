@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lucas' TicTacToe</title>
 </head>
 <body>
     <h1>TIC TAC TOE</h1>
-    <span class="playernames">
+    <span id="playernames">
     <form id="playernameone">
         <input type="text" placeholder="Player one" id="playeronename">
     </form>
@@ -17,6 +17,14 @@
         <input type="text" placeholder="Player two" id="playertwoname">
     </form>
     </span>
+    <div id="whowins"></div>
+    <div>
+    <span>
+      <div id="ScoreCounterX">Player One = 0</div>
+      <div id="Scorebreak"></div>
+      <div id="ScoreCounterO">Player Two = 0</div>
+    </span>
+    </div>
     <table id="gametable">
         <tr>
             <td class="cell" id="00"></td>
