@@ -263,7 +263,6 @@ let computerplay = gameState.board[randomchosenid[0]][randomchosenid[1]]
 computerplay = gameState.players[1]
 randomchosen.click()
 whowins.innerHTML = `${gameState.PlayerName[0]} is currently playing!`
-tictactoevalidator(gameState.board)
 }
 }
 // -------------------------------------------------------------------------------
